@@ -120,6 +120,10 @@
             let win_width=$(window).width();
             let win_height=$(window).height();
 
+            $('*').css({
+                margin : '0px',
+                padding : '0px'
+            })
             $('#big_box').css({
                 width:win_width*3,
                 height:win_height*3,
@@ -130,24 +134,23 @@
                 height:win_height,
                 position:'relative',
             });
-            $('#floatDiv').css({
-                width:win_width*3,
-                height:win_height,
-            })
             $('#out_box1').css({
-                background:'red',
+                background:'navy',
             });
             $('#out_box2').css({
-                background:'blue'
+                background:'azure'
             });
             $('#out_box3').css({
-                background:'green'
+                background:'green',
+                float:'left'
             });
             $('#out_box4').css({
-                background:'pink'
+                background:'pink',
+                float:'left'
             });
             $('#out_box5').css({
-                background:'yellow'
+                background:'yellow',
+                float:'left'
             });
             $('.in_box').css({
                 width:'100px',
@@ -158,7 +161,7 @@
                 position:'absolute',
                 bottom:'10px',
                 left:'50%',
-                marginLeft:'50px',
+                marginLeft:'-50px',
             });
             $('.in_box_r').css({
                 width:'100px',
@@ -168,7 +171,7 @@
                 textAlign:'center',
                 position:'absolute',
                 top:'50%',
-                marginTop:'50px',
+                marginTop:'-50px',
                 right:'10px',
             });
             $('.in_box_l').css({
@@ -179,55 +182,48 @@
                 textAlign:'center',
                 position:'absolute',
                 top:'50%',
-                marginTop:'50px',
+                marginTop:'-50px',
                 left:'10px',
             });
             $('#in_box1').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    top: '-100%'
+                    top: -win_height
                 }, 1000);
             })
             $('#in_box2').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    top: '-200%'
+                    top: -win_height*2
                 }, 1000);
             })
             $('#in_box3_1').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
                     top: 0
                 }, 1000);
             })
             $('#in_box3_2').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    right: '-100%'
+                    left: -win_width
                 }, 1000);
             })
             $('#in_box4_1').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    left: '50%'
+                    right: -win_width
                 }, 1000);
             })
             $('#in_box4_2').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    right: '-300%'
+                    left: -win_width*2
                 }, 1000);
             })
             $('#in_box5_1').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    right: '-100%'
+                    right: -win_width*2
                 }, 1000);
             })
             $('#in_box5_2').click(function() {
                 $('#big_box').animate({
-                    position: 'absolute',
-                    top: 0
+                    top: 0,
+                    left: 0
                 }, 1000);
             })
         }); // 지우면 안됨
@@ -257,22 +253,20 @@
             <h1>2</h1>
             <h1 class="in_box" id="in_box2">▼</h1>
         </div>
-        <div id="floatDiv">
-            <div class="out_box" id="out_box3" style="display: inline-block;">
-                <h1>3</h1>
-                <h1 class="in_box" id="in_box3_1">▲</h1>
-                <h1 class="in_box_r" id="in_box3_2">▶</h1>
-            </div>
-            <div class="out_box" id="out_box4" style="display: inline-block;">
-                <h1>4</h1>
-                <h1 class="in_box_l" id="in_box4_1">◀</h1>
-                <h1 class="in_box_r" id="in_box4_2">▶</h1>
-            </div>
-            <div class="out_box" id="out_box5" style="display: inline-block;">
-                <h1>5</h1>
-                <h1 class="in_box_l" id="in_box5_1">◀</h1>
-                <h1 class="in_box_r" id="in_box5_2">▶</h1>
-            </div>
+        <div class="out_box" id="out_box3" >
+            <h1>3</h1>
+            <h1 class="in_box" id="in_box3_1">▲</h1>
+            <h1 class="in_box_r" id="in_box3_2">▶</h1>
+        </div>
+        <div class="out_box" id="out_box4" >
+            <h1>4</h1>
+            <h1 class="in_box_l" id="in_box4_1">◀</h1>
+            <h1 class="in_box_r" id="in_box4_2">▶</h1>
+        </div>
+        <div class="out_box" id="out_box5" >
+            <h1>5</h1>
+            <h1 class="in_box_l" id="in_box5_1">◀</h1>
+            <h1 class="in_box_r" id="in_box5_2">▶</h1>
         </div>
     </div>
 </body>
