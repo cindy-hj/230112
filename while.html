@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // while문
+        // => 반복문
+        // => 구간이 정해져 있지 않은 반복문
+        // 변수 정의 : 반복 시작 표현
+        // while(조건) {
+        //     조건이 참이면 실행되는 실행문
+        //     조건이 거짓이 되면 반복이 끝
+
+        //     조건문 사용으로 while의 참을 거짓으로 변경 반복을 끝낼 수 있음
+        //     반복하기 증감식 구조 작성
+        // }
+
+        // 무한반복
+        // while(true) {
+        //     document.write('빵');
+        // }
+        
+        // let a = 1;
+        // while(a <= 10) {
+        //     document.write(a);
+        //     a++;
+        // }
+
+        // 1부터 숫자를 하나씩 증가시키면서 더하는 경우 몇을 더할떄 100을 넘는지 구해보세요
+        // let i = 1;
+        // let sum = 0;
+        // while(sum < 100) {
+        //     sum += i;
+        //     i++;
+        // }
+        // document.write(`${i}를 더할때 100을 넘으며 그때의 값은 ${sum}입니다.`)
+
+        // 입력받은 지폐 금액에 따라 교환되는 500원 동전의 갯수
+        // let inputMoney = Number(prompt('지폐 금액을 입력하세요',''));
+        // let cnt = 0;
+
+        // 이렇게 풀면 while 쓸 필요가 없음
+        // cnt = Math.floor(inputMoney/500);
+        // document.write(`500원 동전 ${cnt}개`);
+        
+        // while (inputMoney !== 0) {
+        //     inputMoney -= 500;
+        //     cnt++;
+
+        //     오류 나는 이유?
+        //     cnt가 증가 함에 따라 inputMoney값이 딱 0으로 떨어지는게 아니라 음수가 되는 경우가 생기기 때문
+        //     inputMoney 값에 cnt*500한 값을 이전 값과 중첩되어 빼기때문에 원하는 cnt값이 아님
+        //     inputMoney -= cnt*500;    
+        // }
+        // document.write(`500원 동전 ${cnt}개`);
+
+        // break
+        // => 반복문시 조건에 맞추어 반복을 끝내는 명령
+        // continue
+        // => 반복문시 조건에 맞추어 해당 조건시 패스
+
+        // 질문에 무조건 네라는 답이 들어올때 까지 반복 실행, '네'가 입력되면 반복 끝
+        // while(true) {
+        //     let input = prompt('이벤트 참여 할래?', '');
+        //     if (input === '네') {
+        //         document.write('이벤트에 참여하셨습니다.')
+        //         break;
+        //     }
+        // }
+
+        // 채점 점수가 40, 50, 60, 70, -1, 80 일때 -1은 넘기고 성적처리를 계속 반복하는 반복문을 작성하시오
+        // const grade = [40, 50, 60, 70, -1, 80];
+        // for (i of grade) {
+        //     if(i>0) {
+        //         document.write(`${i}<hr />`);
+        //     } else {
+        //         continue;
+        //     }
+        // }
+        // document.write('끝');
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

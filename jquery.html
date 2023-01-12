@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리</title>
+    <style>
+        #out_box{
+            width: 800px;
+            height: 800px;
+            background-color: beige;
+            margin: 0 auto;
+        }
+        #in_box{
+            background-color: rgb(189, 174, 255);
+            /* 가로 세로 크기 값을 부모의 크기 값으로 설정 */
+        }
+        /* addClass, removeClass 지정 스타일 */
+        #out_box.on{
+            background-color: rgb(255, 228, 244);
+        }
+        /* 클래스로 지정하는경우
+        => 기존 선택자가 아이디 구조일때 클래스명 앞에 아이디를 추가해서 우선순위를 동일시함 */
+    </style>
+    <script src="jquery-3.6.3.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script>
+        // 이 안에서 구동되야 한다
+        $(document).ready(function(){
+            // 스타일 지정할때 css사용
+            // $('#text_1').css({
+            //     color:'#cccccc',
+            //     'font-size':'30px',
+            //     backgroundColor:'aliceblue',
+            // });
+            //=>태그 스타일 지정
+            // $('.text').css({
+            //     color:'white',
+            //     'font-size':'30px',
+            //     backgroundColor:'yellowgreen',
+            // });
+            // $('img').attr({
+            //     src:'img/butter.jpg'
+            // }); 
+            // 태그의 속성 변경
+            // let out_box_width=$('#out_box').width();
+            // let out_box_height=$('#out_box').height();
+
+            // // document.write(out_box_width);
+
+            // $('#in_box').css({
+            //     width:out_box_width/2,
+            //     height:out_box_height/2
+            // });
+
+            // 이벤트
+            // $(선택자).on({
+            //     이벤트명:function(){},
+            //     이벤트명:function(){},
+            //     이벤트명:function(){},
+            //     이벤트명:function(){},
+            //     이벤트명:function(){},
+            // });
+            // $(선택자).이벤트(function() {
+            //     이벤트 실행
+            // });
+
+            // in_box를 클릭 out_box 색상 변경
+            // $('#in_box').click(function(){
+            //     $('#out_box').css({
+            //         background:'azure'
+            //     });
+            // });
+
+            // in_box를 첫번째 클릭하면 out_box의 배경색이 azure로 변경이 되고 두번째 클릭 하면 bisque로 변경되게 작성
+            // 첫번째 클릭 두번째 클릭을 어떻게 구분하나? 변수를 잡아서 클릭될때마다 변수값을 증감시키면! 아니면 변수값이 불리언값을 가지도록!
+            // 슬라이드 화살표 버튼의 형식
+            // let clickNum = true;
+            // $('#in_box').click(function(){
+            //     if(clickNum === true) {
+            //         $('#out_box').css({
+            //          background:'azure'
+            //         });
+            //         clickNum = false;
+            //     } else {
+            //         $('#out_box').css({
+            //          background:'bisque'
+            //         });
+            //         clickNum = true;
+            //     }
+            // });
+
+            // - mouseenter, mouseleave
+            // 애니메이터 기능
+            // 1.addClass, removeClass
+            // => css 스타일을 추가, 제거하는 부분에 시간값을 설정
+            // $('#in_box').click(function(){
+            //     $('#out_box').addClass('on', 1000);
+            //     // $(선택자).addClass(클래스명, 시간)
+            //     // 시간은 ms기준
+            // });
+
+            // 2.animate
+            // => css의 position을 사용
+            // => 위치값 이동 
+            // => width, height 크기값
+            // => margin, padding 여백값 활용
+
+            // $('#in_box').click(function() {
+            //     $('#out_box').animate({
+            //         width : 400,
+            //         // 한번 더 클릭해야 완전히 200으로 적용되는데..?
+            //         height: 200,
+            //         marginTop:100
+            //     }, 1000);
+            // });
+
+            // window창에 맞춘 크기값
+            let win_width=$(window).width();
+            let win_height=$(window).height();
+
+            $('#big_box').css({
+                width:win_width*3,
+                height:win_height*3,
+                position: 'fixed'
+            })
+            $('.out_box').css({
+                width:win_width,
+                height:win_height,
+                position:'relative',
+            });
+            $('#floatDiv').css({
+                width:win_width*3,
+                height:win_height,
+            })
+            $('#out_box1').css({
+                background:'red',
+            });
+            $('#out_box2').css({
+                background:'blue'
+            });
+            $('#out_box3').css({
+                background:'green'
+            });
+            $('#out_box4').css({
+                background:'pink'
+            });
+            $('#out_box5').css({
+                background:'yellow'
+            });
+            $('.in_box').css({
+                width:'100px',
+                height:'100px',
+                background:'white',
+                color:'black',
+                textAlign:'center',
+                position:'absolute',
+                bottom:'10px',
+                left:'50%',
+                marginLeft:'50px',
+            });
+            $('.in_box_r').css({
+                width:'100px',
+                height:'100px',
+                background:'white',
+                color:'black',
+                textAlign:'center',
+                position:'absolute',
+                top:'50%',
+                marginTop:'50px',
+                right:'10px',
+            });
+            $('.in_box_l').css({
+                width:'100px',
+                height:'100px',
+                background:'white',
+                color:'black',
+                textAlign:'center',
+                position:'absolute',
+                top:'50%',
+                marginTop:'50px',
+                left:'10px',
+            });
+            $('#in_box1').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    top: '-100%'
+                }, 1000);
+            })
+            $('#in_box2').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    top: '-200%'
+                }, 1000);
+            })
+            $('#in_box3_1').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    top: 0
+                }, 1000);
+            })
+            $('#in_box3_2').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    right: '-100%'
+                }, 1000);
+            })
+            $('#in_box4_1').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    left: '50%'
+                }, 1000);
+            })
+            $('#in_box4_2').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    right: '-300%'
+                }, 1000);
+            })
+            $('#in_box5_1').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    right: '-100%'
+                }, 1000);
+            })
+            $('#in_box5_2').click(function() {
+                $('#big_box').animate({
+                    position: 'absolute',
+                    top: 0
+                }, 1000);
+            })
+        }); // 지우면 안됨
+    </script>
+</head>
+<body>
+    <!-- <h1 id="text_1">텍스트1</h1>
+    <h1 id="text_2">텍스트2</h1>
+    <h1 class="text">텍스트</h1>
+    <h1 class="text">텍스트</h1>
+    <img src="img/butter.jpg" alt=""> -->
+    <div id="big_box">
+        <!-- 실제 애니메이터로 이동되는 영역
+        가로크기 윈도우크기
+        세로크기 out_box*3크기(윈도우세로*3) 
+        윈도우 왼쪽 상단을 기준작업
+        윈도우 크기로만 인식(스크롤이 없음)
+        -->
+        <div class="out_box" id="out_box1">
+        <!-- 윈도우의 가로세로 크기값
+        버튼의 위치 설정을 위해서 position값 지정
+        색상지정 -->
+            <h1>1</h1>
+            <h1 class="in_box" id="in_box1">▼</h1>
+        </div>
+        <div class="out_box" id="out_box2">
+            <h1>2</h1>
+            <h1 class="in_box" id="in_box2">▼</h1>
+        </div>
+        <div id="floatDiv">
+            <div class="out_box" id="out_box3" style="display: inline-block;">
+                <h1>3</h1>
+                <h1 class="in_box" id="in_box3_1">▲</h1>
+                <h1 class="in_box_r" id="in_box3_2">▶</h1>
+            </div>
+            <div class="out_box" id="out_box4" style="display: inline-block;">
+                <h1>4</h1>
+                <h1 class="in_box_l" id="in_box4_1">◀</h1>
+                <h1 class="in_box_r" id="in_box4_2">▶</h1>
+            </div>
+            <div class="out_box" id="out_box5" style="display: inline-block;">
+                <h1>5</h1>
+                <h1 class="in_box_l" id="in_box5_1">◀</h1>
+                <h1 class="in_box_r" id="in_box5_2">▶</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
